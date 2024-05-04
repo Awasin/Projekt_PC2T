@@ -70,7 +70,6 @@ public class Test {
 		
 		Scanner sc = new Scanner(System.in);
 		
-		//SQL inicializace
 		Knihovna knihovna = new Knihovna();
 		while(run) {
 			System.out.println("Vitejte u knihovni databaze. Zadejte celé číslo pro:");

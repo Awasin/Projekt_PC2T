@@ -181,7 +181,6 @@ private List<Book> knihy;
 			System.out.println("Soubor  nelze otevrit");
 			return false;
 		} catch (NumberFormatException e) {
-			// TODO Auto-generated catch block
 			System.out.println("Chyba integrity dat v souboru");
 			return false;
 		} catch (IllegalArgumentException e) {
