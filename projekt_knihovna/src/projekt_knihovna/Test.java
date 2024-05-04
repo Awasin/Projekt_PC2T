@@ -182,6 +182,10 @@ public class Test {
 				if(knihovna.importBook(name))System.out.println("Import proběhl úspěšně.");
 				else System.out.println("Import selhal.");
 				break;
+			case 12:
+				knihovna.ulozKnihovnu();
+				run = false;
+				break;
 			case 69:
 				knihovna.pridejKnihu(new Roman("Zaklínač", new ArrayList<String>() {{
 				    add("Andrzej Szapovski");

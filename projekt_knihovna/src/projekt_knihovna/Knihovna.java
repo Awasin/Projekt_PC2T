@@ -13,9 +13,10 @@ import java.util.List;
 
 public class Knihovna {
 private List<Book> knihy;
-	
 	public Knihovna(){
-		knihy = new ArrayList<>();
+		if(!SQL_stuff.getInstance().connect())System.out.println("fail");
+		knihy = new ArrayList<>(SQL_stuff.getInstance().databasePull());
+		SQL_stuff.getInstance().disconnect();
 	}
 	
 	public void pridejKnihu(Book kniha) {
@@ -177,7 +178,7 @@ private List<Book> knihy;
 						Integer.parseInt(castiTextu[1]),(Integer.parseInt(castiTextu[4]) == 1)));
 			}
 		} catch (IOException e) {
-			System.out.println("Soubor  nelze otev��t");
+			System.out.println("Soubor  nelze otevrit");
 			return false;
 		} catch (NumberFormatException e) {
 			// TODO Auto-generated catch block
@@ -201,4 +202,13 @@ private List<Book> knihy;
 		return true;
 	}
 	
+	public void ulozKnihovnu() {
+		SQL_stuff.getInstance().connect();
+		SQL_stuff.getInstance().dropTables();
+		SQL_stuff.getInstance().createTables();
+		for(Book book:knihy) {
+			SQL_stuff.getInstance().insertBook(book);
+		}
+		SQL_stuff.getInstance().disconnect();
+	}
 }
